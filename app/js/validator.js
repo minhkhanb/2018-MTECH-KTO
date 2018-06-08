@@ -19,12 +19,36 @@
                     $el.val()
     }
 
-    function compareDate($fromDate, $toDate) {
-        return (new Date($toDate) > new Date($fromDate));
+    function parseToDate(str_date) {
+        var result, date_obj = {
+            day: '0',
+            month: '0',
+            year: '0'
+        };
+        console.log(str_date);
+        var idx = 0;
+        var arr_date = str_date.split('/');
+        for (var prop in date_obj) {
+            date_obj[prop] = arr_date[idx];
+            idx++;
+        }
+
+        result = date_obj['month'] + '/' + date_obj['day'] + '/' + date_obj['year'];
+        return (new Date(result).valueOf());
     }
 
-    function compareRangeDate($el, $fromDate, $toDate) {
-        return (new Date($fromDate) > new Date($el) || new Date($el) > new Date($toDate));
+    function compareDate($end, $start) {
+        var start_date = parseToDate($start);
+        var end_date = parseToDate($end);
+        console.log(start_date > end_date)
+        return (start_date > end_date);
+    }
+
+    function compareRangeDate($cur, $start, $end) {
+        var current_date = parseToDate($cur);
+        var start_date = parseToDate($start);
+        var end_date = parseToDate($end);
+        return (start_date < current_date);
     }
 
     var Validator = function (element, options) {
@@ -120,12 +144,15 @@
         },
         'compare': function ($el) {
             var _this = $el.attr('data-compare');
-            return new Date($el.val()).valueOf() < new Date($(_this).val()).valueOf()
+            var result = compareDate($el.val(), $(_this).val());
+            return result;// Date($el.val()).valueOf() < new Date($(_this).val()).valueOf()
         },
         'range': function ($el) {
             var _from = $el.attr('data-range-from');
             var _to = $el.attr('data-range-to');
-            return (new Date($el.val()).valueOf() > new Date($(_to).val()).valueOf() || new Date($el.val()).valueOf() < new Date($(_from).val()).valueOf());
+            var result = compareRangeDate($el.val(), $(_from).val(), $(_to).val());
+            console.log(result)
+            return result;//(new Date($el.val()).valueOf() > new Date($(_to).val()).valueOf() || new Date($el.val()).valueOf() < new Date($(_from).val()).valueOf());
         }
     }
 

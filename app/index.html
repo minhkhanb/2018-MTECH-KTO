@@ -12,6 +12,7 @@
     <!-- Owl Stylesheets -->
     <link rel="stylesheet" href="css/owl.carousel.css">
     <link rel="stylesheet" href="css/owl.theme.default.css">
+    <link rel="stylesheet" href="css/chosen.css">
 
     <link rel="stylesheet" href="css/app.css">
 
@@ -107,7 +108,7 @@
                             </p>
                         </li>
                         <li>
-                            <p><strong>0 giải phụ</strong></p>
+                            <p><strong>60 giải phụ</strong></p>
                             <p>
                                 60 bạn mua sản phẩm du lịch 3 ngày 2 đêm trở lên của Công ty Du lịch Kim’s Travel (với
                                 điều kiện có đầy đủ khách sạn, ăn sáng tại khách sạn, xe buýt shuttle đưa đón sân bay và
@@ -135,6 +136,9 @@
                         <li>
                             <strong class="text-capitalize">Cách thức nhận quà:</strong>
                             Thông tin người trúng giải sẽ được cập nhật trên website ngày 25/07/2018
+                        </li>
+                        <li>
+                            <p class="note_sm">“K-tour card là thẻ du lịch đặc biệt dành cho người nước ngoài tại Hàn Quốc. Với chiếc thẻ này, bạn chỉ cần nạp tiền vào thẻ và sử dụng để thanh toán các phương tiện giao thông công cộng như tàu điện ngầm, xe buýt, taxi. Ngoài ra bạn còn được giảm giá khi đến các điểm tham quan du lịch, bao gồm cả trung tâm thương mại, khách sạn, nhà hàng, chương trình biểu diễn ... với K-tour card, chuyến du lịch Hàn Quốc của bạn sẽ tuyệt vời hơn bao giờ hết”</p>
                         </li>
                     </ul>
                 </div>
@@ -187,7 +191,7 @@
                                                 đi</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control kto_datepicker" id="from_date"
-                                                       placeholder="">
+                                                       placeholder="" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -195,8 +199,8 @@
                                                 nhận
                                                 được</label>
                                             <div class="col-sm-5">
-                                                <select id="gift" class="form-control" required>
-                                                    <option>Một trái me</option>
+                                                <select id="gift" class="form-control chosen-select" required>
+                                                    <option>Chọn 1 món quà</option>
                                                     <option>Hai trái me</option>
                                                     <option>Ba trái me</option>
                                                     <option>Bốn trái me</option>
@@ -236,7 +240,7 @@
                                                 hàng
                                                 không</label>
                                             <div class="col-sm-7">
-                                                <select id="airline" class="form-control text-uppercase" required>
+                                                <select id="airline" class="form-control text-uppercase chosen-select" required>
                                                     <option>vietnam airline 1</option>
                                                     <option>vietnam airline 2</option>
                                                     <option>vietnam airline 3</option>
@@ -274,7 +278,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <p class="note small_note">* KTO không chịu trách nhiệm trong trường hợp quà bị
-                                            thất lạc vì sai địa chỉ"</p>
+                                            thất lạc vì sai địa chỉ</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -774,6 +778,7 @@
 <script src="js/bootstrap.js"></script>
 <script src="js/validator.js"></script>
 <script src="js/owl.carousel.js"></script>
+<script src="js/chosen.jquery.js"></script>
 <script src="js/app.js"></script>
 <!-- endbuild -->
 </body>

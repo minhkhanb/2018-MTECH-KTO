@@ -1,22 +1,22 @@
 var KTO = window.KTO || (window.KTO = {logs: '', version: '1.0.0'});
 
 var isMobile = {
-    Android: function() {
+    Android: function () {
         return navigator.userAgent.match(/Android/i);
     },
-    BlackBerry: function() {
+    BlackBerry: function () {
         return navigator.userAgent.match(/BlackBerry/i);
     },
-    iOS: function() {
+    iOS: function () {
         return navigator.userAgent.match(/iPhone|iPad|iPod/i);
     },
-    Opera: function() {
+    Opera: function () {
         return navigator.userAgent.match(/Opera Mini/i);
     },
-    Windows: function() {
+    Windows: function () {
         return navigator.userAgent.match(/IEMobile/i);
     },
-    any: function() {
+    any: function () {
         return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
     }
 };
@@ -84,8 +84,14 @@ KTO.higher = function () {
 };
 
 KTO.Datepicker = function () {
-    if(isMobile.any()) {
-        $('.kto_datepicker').attr('type', 'date');
+    if (isMobile.any()) {
+        //$('.kto_datepicker').attr('type', 'date');
+        $(".kto_datepicker").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'dd/mm/yy',
+            yearRange: '1970:2020',
+        });
     }
     else {
         $('.kto_datepicker').attr('type', 'text');
@@ -109,18 +115,18 @@ KTO.CheckBox = function () {
     $check.on('click', function (evt) {
         var data_answer = $(this).attr('data-answer') === 'yes' ? true : false;
         console.log(data_answer);
-        if(!enable_check) {
+        if (!enable_check) {
             $check.removeClass('checked')
             $(this).addClass('checked');
             console.log('check in');
         }
         data_answer = false;
-        if(data_answer) {
+        if (data_answer) {
             $('.join-program .answer').removeClass('selected_answer');
             $('.join-program .answer.answer-yes').addClass('selected_answer');
         }
         num_check++;
-        if(num_check > 1) {
+        if (num_check > 1) {
             num_check = 0;
         }
         console.log('check out: ', num_check);
@@ -137,10 +143,16 @@ KTO.ValidateForm = function () {
 };
 
 KTO.Loading = function () {
-    if($('body').hasClass('is_loading')) {
+    if ($('body').hasClass('is_loading')) {
         $('body').removeClass('is_loading');
     }
 };
+
+KTO.Chosen = function () {
+    $(".chosen-select").chosen({
+        disable_search_threshold: 10
+    });
+}
 
 KTO.Init = function () {
     KTO.higher();
@@ -149,6 +161,7 @@ KTO.Init = function () {
     KTO.CheckBox();
     KTO.ValidateForm();
     KTO.Loading();
+    KTO.Chosen();
 };
 
 KTO.Resize = function () {

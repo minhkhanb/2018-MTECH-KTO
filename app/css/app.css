@@ -54,6 +54,34 @@ a {
 .container-helper {
   padding: 0 80px; }
 
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid black; }
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #f00; }
+
+.arrow-right {
+  width: 0;
+  height: 0;
+  border-top: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+  border-left: 60px solid green; }
+
+.arrow-left {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid blue; }
+
 h2 a, h3 a {
   text-decoration: none !important; }
 
@@ -378,25 +406,20 @@ section h3 a {
   animation: spin 0.5s linear infinite;
   position: absolute;
   top: 50%;
-  left: 50%;
-  -webkit-transform: translateY(-50%, -50%);
-  -moz-transform: translateY(-50%, -50%);
-  -ms-transform: translateY(-50%, -50%);
-  -o-transform: translateY(-50%, -50%);
-  transform: translateY(-50%, -50%); }
+  left: 50%; }
 
 /* Safari */
 @-webkit-keyframes spin {
   0% {
-    -webkit-transform: rotate(0deg); }
+    -webkit-transform: translate(-50%, -50%) rotate(0deg); }
   100% {
-    -webkit-transform: rotate(360deg); } }
+    -webkit-transform: translate(-50%, -50%) rotate(360deg); } }
 
 @keyframes spin {
   0% {
-    transform: rotate(0deg); }
+    transform: translate(-50%, -50%) rotate(0deg); }
   100% {
-    transform: rotate(360deg); } }
+    transform: translate(-50%, -50%) rotate(360deg); } }
 
 .is_loading {
   overflow: hidden; }
@@ -408,6 +431,72 @@ section h3 a {
 
 .ui-widget {
   font-size: 1.5em; }
+
+p.note_sm {
+  font-size: 17px; }
+
+.join-program form select.form-control option {
+  font-family: 'UTM-AVO', sans-serif;
+  color: #000;
+  font-weight: normal; }
+
+.join-program form select.form-control option:hover {
+  font-weight: bold; }
+
+.chosen-container-single .chosen-single {
+  height: 34px;
+  padding: 3px 0 3px 5px;
+  background: #fff;
+  border: 2px solid #002a57;
+  font-family: 'UTM-AvoItalic', sans-serif; }
+
+.chosen-container .chosen-results li {
+  font-family: 'UTM-AVO', sans-serif; }
+
+.chosen-container .chosen-results li.highlighted {
+  background-color: transparent;
+  background-image: none;
+  color: #000;
+  font-family: 'utm-avobold', sans-serif; }
+
+.chosen-container-single .chosen-drop {
+  margin-top: 5px;
+  border-radius: 4px 4px 4px 4px;
+  border: 1px solid #aaa; }
+
+.chosen-container-active.chosen-with-drop .chosen-single {
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border: 2px solid #002a57; }
+
+.chosen-container.chosen-with-drop .chosen-drop:before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #fff;
+  position: absolute;
+  top: -5px;
+  right: 5px;
+  display: block; }
+
+.chosen-container-single .chosen-single:before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid #afafaf;
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  display: block;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%); }
 
 @media (min-width: 1024px) {
   .header {
@@ -498,7 +587,9 @@ section h3 a {
   #wrapper {
     background-position-y: 50px; }
   .header {
-    min-height: 225px; } }
+    min-height: 225px; }
+  p.note_sm {
+    font-size: 14px; } }
 
 @media (min-width: 375px) and (max-width: 1000px) {
   .header {
@@ -508,13 +599,17 @@ section h3 a {
   .header {
     min-height: 270px; } }
 
+@media (min-width: 568px) and (max-width: 1000px) {
+  .header {
+    min-height: 370px; } }
+
 @media (min-width: 600px) and (max-width: 1000px) {
   .header {
-    min-height: 380px; }
-    .header .logo {
-      margin: 0 auto 15px;
-      max-width: 180px;
-      height: 80px; } }
+    min-height: 410px; }
+  .logo {
+    margin: 0 auto 15px;
+    max-width: 180px;
+    height: 80px; } }
 
 @media (min-width: 678px) and (max-width: 1000px) {
   .header {
@@ -533,3 +628,9 @@ section h3 a {
     min-height: 620px; }
   #wrapper {
     background-position-y: 60px; } }
+
+@media (min-width: 1024px) and (max-width: 1120px) {
+  #wrapper {
+    background-position-y: 70px; }
+  .header {
+    min-height: 660px; } }
