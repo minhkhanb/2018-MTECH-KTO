@@ -1,5 +1,26 @@
 var KTO = window.KTO || (window.KTO = {logs: '', version: '1.0.0'});
 
+var isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
+
 KTO.slider = function () {
     $('.owl-carousel').owlCarousel({
         loop: true,
@@ -63,7 +84,18 @@ KTO.higher = function () {
 };
 
 KTO.Datepicker = function () {
-    $(".kto_datepicker").datepicker();
+    if(isMobile.any()) {
+        $('.kto_datepicker').attr('type', 'date');
+    }
+    else {
+        $('.kto_datepicker').attr('type', 'text');
+        $(".kto_datepicker").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'dd/mm/yy',
+            yearRange: '1970:2020',
+        });
+    }
 };
 
 KTO.CheckBox = function () {
@@ -119,4 +151,17 @@ KTO.Init = function () {
     KTO.Loading();
 };
 
+KTO.Resize = function () {
+    KTO.Datepicker();
+}
+
+
 window.addEventListener('load', KTO.Init(), false);
+
+
+$(window).resize(function () {
+    KTO.Resize();
+});
+
+
+

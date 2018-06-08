@@ -406,6 +406,9 @@ section h3 a {
   top: 2px;
   right: 6px; }
 
+.ui-widget {
+  font-size: 1.5em; }
+
 @media (min-width: 1024px) {
   .header {
     min-height: 592px; }
